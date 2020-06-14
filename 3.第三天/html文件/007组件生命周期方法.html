@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class Hello extends React.Component{
+        // 经典报错 
+        // Super expression must either be null or a function, not undefined
+        // 这个一般是类写错了 
+        // 生命周期方法一：在组件初始化的时候会执行，只执行一次
+        constructor(props){
+            console.log('-------constructor------');
+            super(props);
+            this.state = {
+                sTr:'Hello world!',
+                iNum:10
+
+            }
+        }
+
+        fnAdd=()=>{
+            this.setState(state=>({iNum:state.iNum+1}))
+        }
+
+        // 生命周期方法二，在组件初始化之后，在组件挂载之前会执行，然后在每次组件更新之前也会执行
+        render(){
+            console.log('-------render------');
+            return (
+                <div>
+                    <p>{this.state.sTr}</p>
+                    <p>{ this.state.iNum }</p>
+                    <input type="button" value="递增" onClick={ this.fnAdd } />
+                </div>
+            )
+        }
+
+        // 生命周期方法三，组件在挂载的页面之后会执行，只执行一次
+        componentDidMount(){
+            console.log('-------componentDidMount------'); 
+        }
+
+        // 生命周期方法四，组件在更新之前会执行这个方法
+        // 方法需要返回一个布尔值，这布尔值决定组件是否更新
+        shouldComponentUpdate(){
+            console.log('-------shouldComponentUpdate------'); 
+            return true;
+        }
+
+        // 生命周期方法五，组件在更新之后会执行这个方法
+        componentDidUpdate(){
+            console.log('-------componentDidUpdate------'); 
+        }
+
+
+        // 生命周期方法六，组件在销毁之前会执行的方法
+        componentWillUnmount(){
+            console.log('-------componentWillUnmount------'); 
+        }
+
+    }
+
+    ReactDOM.render(<Hello />,document.getElementById('root'));
+    
+    setTimeout(()=>{
+        ReactDOM.render(<h2>Bye-Bye!</h2>,document.getElementById('root'));
+    },3000)
+    
+
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 定义一个按钮组件
+      class Helloname extends React.Component {
+        fnHello() {
+          // console.log(this); 这里的值是undefined,这是react自己的问题
+          // 解决办法  要么把函数写成箭头函数的样子 要么在jsx对象中用bind方法改变this指向
+          alert("Hello," + this.props.name)
+        }
+
+        // 改成箭头函数的形式,方法里面的this就是指向组件本身了
+        fnHello = () => {
+          alert("Hello," + this.props.name)
+        }
+
+        // 补充
+        fnHello2 = (sTr) => {
+          alert("Hello " + sTr)
+        }
+        render() {
+          return (
+            // 第一种 报错 Cannot read property 'props' of undefined
+            // <input type="button" value="打招呼" onClick={this.fnHello} />
+            // <input type="button" value="打招呼" onClick={this.fnHello('LWQ')} />  这样写会直接调用 vue中可以直接写事件传参 react中不行 因为在jsx对象语法中会直接调用
+            <div>
+              <input
+                type="button"
+                value="打招呼"
+                onClick={this.fnHello.bind(this)}
+              />
+
+              <input type="button" value="打招呼" onClick={this.fnHello} />
+
+              <input
+                type="button"
+                value="打招呼2"
+                onClick={() => {
+                  this.fnHello2("Rose")
+                }}
+              />
+
+              {/* 页面刷新时 jsx对象中的事件会自动执行 为了避免 可以在外层加个匿名函数  同时为了保证this的指向不变 需要用箭头函数*/}
+              <input
+                type="button"
+                value="打招呼2"
+                onClick={() => {
+                  this.fnHello2("Rose")
+                }}
+              />
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<Helloname name="LWQ" />, document.getElementById("root"))
+    </script>
+  </body>
+</html>

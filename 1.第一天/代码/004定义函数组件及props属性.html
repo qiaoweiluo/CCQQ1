@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 定义一个不传参的函数组件
+    // 组件的名字就是函数名字，首字母需要大写
+    // 组件需要返回一个jsx对象
+    /* 
+    function Welcome(){
+        return <h1>Hello,Tom</h1>
+    } 
+    */
+
+    /* 
+    let Welcome = function(){
+        return <h1>Hello,Tom</h1>
+    }  
+    */   
+    // let Welcome = ()=><h1>Hello,Tom</h1>;
+// ************************************************************************** 
+    // 定义一个传参的函数组件
+    
+    function Welcomename(props){
+        console.log(props); // {name: "Sara", age: 18}
+        
+        return <h1>Hello,{ props.name },你的年龄是：{ props.age }</h1>
+    } 
+    
+
+    //let Welcomename = props=><h1>Hello,{ props.name },你的年龄是：{ props.age }</h1>
+    // let Welcomename=({name,age})=><h1>Hello,{ name },你的年龄是：{ age }</h1>
+
+
+    // 定义一个大的组件，里面嵌套其他的组件
+    // function App(){
+    //     return (
+    //         <div>
+    //             <Welcomename name="Tom" age={19} />
+    //             <Welcomename name="Jack" age={20} />
+    //             <Welcomename name="Rose" age={18} />
+    //         </div>
+    //     );
+    // }
+    // 将组件渲染出来
+   //ReactDOM.render(<Welcome /> ,document.getElementById('root') );
+   // 传递属性值，如果值是字符串，可以省略大括号，如果是其他的类型，需要用大括号传值
+    ReactDOM.render(<Welcomename name={"Sara"} age={ 18 } /> ,document.getElementById('root') );
+    // ReactDOM.render(<App /> ,document.getElementById('root') );
+
+</script>
+</body>
+
+</html>

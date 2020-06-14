@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- react核心js库 -->
+    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="js/react-dom.development.js"></script>
+    <!-- 负责翻译react语法和es6语法的js库 -->
+    <script type="text/javascript" src="js/babel.min.js"></script>
+</head>
+<body>
+    <!-- 创建容器标签 -->
+    <div id="root"></div>
+    <!-- 创建js标签，类型需要写成text/babel，目标是告诉babel.min.js，这里的语法需要翻译后再执行 -->
+    <script type="text/babel">
+        // react里面的特征语法，jsx语法
+        // oJsx 里面存储的是一个jsx对象
+        let oJsx = <h1>Hello world!</h1>;
+
+        // ReactDOM是内置对象
+        // render方法接收两个参数，第一个参数是一个jsx对象或者是一个组件
+        // 第二个参数是一个原生dom对象，作为显示内容的容器标签
+        ReactDOM.render(oJsx, document.getElementById('root'));
+
+    </script>
+</body>
+</html>

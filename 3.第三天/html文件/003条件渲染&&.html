@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    // 1、组件内根据不同的条件返回不同的结构
+    /* function LoginState(props){
+        if(props.bIslogin==true){
+            return <h2>欢迎回来！</h2>
+        }else{
+            return <h2>请登录！</h2>
+        }
+    } */
+
+
+    // 2、组件内根据不同的条件返回不同的子组件
+    function Login(){
+        return <h2>欢迎回来！</h2>
+    }
+
+    function LogOut(){
+        return <h2>请登录！</h2>
+    }
+
+    function LoginState(props){
+        if(props.bIslogin==true){
+            return <Login />
+        }else{
+            return <LogOut />
+        }
+    }
+
+
+    // 3、和 && 一起使用，实现结构的显示和删除
+    class Userinfo extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                username:'张大山',
+                aMsg:['新邮件']
+            }
+        }
+        render(){
+            return(
+                <div>
+                    <p>你好！{ this.state.username }</p>
+                    {
+                        this.state.aMsg.length > 0 && <p>您有{ this.state.aMsg.length }条消息！</p>
+                    }                    
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Userinfo />,document.getElementById('root'));
+
+</script>
+</body>
+</html>

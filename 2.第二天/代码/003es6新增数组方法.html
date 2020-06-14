@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    
+        let aList = ['a','b','c','d',NaN];
+
+        // 遍历数组
+        // 第一个参数是数组成员的值，第二个参数是成员的索引值
+
+       /*  aList.map(function(item,i){
+            alert( i + ' | ' + item );
+        }) */
+
+        aList.map((item,i)=>{
+            //alert( i + ' | ' + item );
+        })
+
+
+        // 判断数组中是否包含某个成员，返回一个布尔值
+        //alert( aList.includes('c') );
+        //alert( aList.includes(NaN) );
+
+
+        // 将数组通过一定条件过滤返回一个新的数组
+        let aList02 = [1,2,3,4,5,6,7,8,9];
+        let aList03 = aList02.filter(function(item){
+            return item % 2 === 0
+        });
+
+        //alert(aList03); // 2,4,6,8
+        aList03[0] = 22;
+        //alert(aList03); 
+        //alert(aList02); 
+
+
+        let aList04 = [{name:'tom',age:18},{name:'Rose',age:19},{name:'Jack',age:20}]
+        // 过滤出年龄大于18岁的数组
+        let aList05 = aList04.filter(function(item){
+            return item.age > 18
+        })
+
+        //console.log(aList05);
+
+        aList05[1].age = 22;
+        //console.log(aList05);
+        //console.log(aList04);
+
+        // 从上面的例子可以知道，filter方法过滤出来的数组是一个浅拷贝
+
+
+        // 在数组中找到满足条件的第一个成员，找到后返回这个成员，如果找不到，就返回undefined
+        let iNum = aList02.find(function(item){
+            return item > 6
+        })
+        //alert(iNum);
+
+        let oPerson = aList04.find(item=>item.name=='Rose');
+        console.log(oPerson);
+        oPerson.name = 'Rocky';
+        console.log(oPerson);
+        console.log(aList04);
+
+        // find方法也是一个浅拷贝
+
+        // 深拷贝的方法：先转成字符串 再转成
+        // JSON.parse( JSON.stringify( obj ) )
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

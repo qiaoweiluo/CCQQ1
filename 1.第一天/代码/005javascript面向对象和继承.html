@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">  
+
+        // 定义一个Person类的构造函数
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        // 在函数的原型上定义Person类的方法                                   
+        Person.prototype.showname=function(){
+            alert('my name is ' + this.name);
+        }
+        Person.prototype.showage = function(){
+            alert('my age is ' + this.age);
+        }
+
+        // 实例化Person类
+        let Andy = new Person('Andy',50);
+        alert( Andy.name );
+        Andy.showname();
+
+        // 定义一个Student类继承Person类
+        function Student(name,age,school){
+            // 子类中调用父类的构造函数来继承属性
+            Person.call(this,name,age);
+            // console.log(this); // Student
+            /*
+                调用Person这个构造函数 改变了Person中this的指向 所以此时Person中this的指向是Student
+                函数也是一个对象  继承谁就调用谁
+            */
+            
+            // 定义子类自己的属性
+            this.school = school; // 修改后 this指向Student
+        }
+
+        // 继承父类的方法
+        Student.prototype = new Person();
+
+        // 定义子类自己的方法
+        Student.prototype.showschool = function(){
+            alert('my school is ' + this.school );
+        }
+        let xiaoming = new Student('xiaoming',15,'shenzhenyizhong');
+
+        alert( xiaoming.name );
+        alert( xiaoming.age );
+        xiaoming.showname();
+        xiaoming.showage();
+        xiaoming.showschool();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

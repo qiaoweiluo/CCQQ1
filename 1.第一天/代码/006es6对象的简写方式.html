@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        let name = '张大山';
+        let age = 20;
+
+        /* let oPerson = {
+            name:'张大山',
+            age:20,
+            showname:function(){
+                alert('我的名字是：' + this.name)
+            },
+            showage:function(){
+                alert('我的年龄是：' + this.age)
+            }
+        }  */
+
+        // 上面的对象可以简写成下面的形式：
+        // 对象的解构赋值 && 箭头函数 
+        // 函数必须用ES6语法书写
+        let oPerson = {
+            name,
+            age,
+            showname(){
+                alert('我的名字是：' + this.name)
+            },
+            showage(){
+                alert('我的年龄是：' + this.age)
+            }
+        } 
+
+        alert(oPerson.name);
+        oPerson.showage();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

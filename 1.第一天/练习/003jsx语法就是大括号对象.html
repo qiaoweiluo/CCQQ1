@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+    <style>
+        .sty01 {
+            font-size: 30px;
+            color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    let iNum01 = 11;
+    let sTr = 'Hello world!';
+    let bIsok = false;
+
+    function fnReverse(sTr){
+        return sTr.split('').reverse().join('')
+    }
+    // 创建一个jsx对象
+    // jsx对象最外面可以用一个小括号，目的是为了代码的美观，也可以不用
+    let oJsx = (
+        // jsx对象最外层只能有一个标签
+        <div>
+            {/* jsx结构里面的注释的写法 */}           
+            <h1>jsx语法示例</h1>
+            {/* 使用单个大括号来插入变量，表达式或者函数调用 */}   
+            <p>{ iNum01+5 }</p>
+            <p>{ sTr.split('').reverse().join('') }</p>
+            <p>{ fnReverse( sTr ) }</p>
+            {/* jsx语法中写事件会直接调用 */}
+            {/* 插入三元运算表达式 */} 
+            <p>{ bIsok?'YES':'NO' }</p> 
+            {/* 单个标签需要在标签结尾加一个空格，在加一个反斜杠 */}
+            <img src="./images/cat.png" alt="" />
+            {/* class属性名要写成className */} 
+            <p className="sty01">这是使用了class样式的p标签</p>
+            {/* 行间样式定义的方法，第一层大括号表示插入变量的大括号，第二层大括号表示对象的大括号 */} 
+            <p style={{color:'red',fontSize:'30px'}}>使用了行间样式的p标签</p>
+        </div>
+    );
+    
+    ReactDOM.render(oJsx,document.getElementById('root'));
+</script>
+</body>
+
+</html>

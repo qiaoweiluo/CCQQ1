@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <!-- (1) 通过class关键字定义一个类  语法糖 -->
+    <!-- (2) 通过extends关键字来实现继承 -->
+    <!-- (3) super表示在子类中调用父类的构造函数类继承属性 -->
+</body>
+<script type="text/javascript">
+    // 通过class关键字定义一个类  语法糖
+    class Person {
+        // 定义构造函数
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        // 定义方法,要用对象的方法简写方式来定义
+        showname() {
+            alert('我的名字是：' + this.name)
+        }
+        showage() {
+            alert('我的年龄是：' + this.age)
+        }
+    }
+    // 将类实例化成一个对象
+    // let Andy = new Person('刘德华', 18);
+
+    // alert(Andy.name);
+    // Andy.showage();
+
+    // 定义个Student类继承Person类
+    // 通过extends关键字来实现继承
+    class Student extends Person {
+        constructor(name, age, school) {
+            // super表示在子类中调用父类的构造函数类继承属性
+            super(name, age);
+            this.school = school;
+        }
+        // 定义和父类同名的方法来覆盖父类的方法
+        showage() {
+            alert('我的芳龄是：' + this.age + '岁了！')
+        }
+
+        // 定义子类自己的方法
+        showschool() {
+            alert('我的学校是：' + this.school);
+        }
+    }
+
+    let Xiaoming = new Student('小明', 15, '深圳一中');
+
+    alert(Xiaoming.name);  // 小明
+    alert(Xiaoming.age);  // 15
+    Xiaoming.showname(); // 我的名字是: 小明
+    Xiaoming.showage();  // 我的芳龄是：15
+    Xiaoming.showschool();  // 我的学校是：深圳一中
+</script>
+
+</html>

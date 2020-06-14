@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class Increase extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            iNum:10
+        }
+    }
+    fnAdd=()=>{               
+        // setState是异步执行的 所以先打印 "下面的代码"  再打印'setState'
+        this.setState(state=>{
+            console.log('setState')
+            return {iNum:state.iNum+1}
+        });
+        
+        console.log('下面的代码');  
+
+    }
+    render(){
+        return (
+            <div>
+                <p>{ this.state.iNum }</p>
+                <input type="button" value="递增" onClick={this.fnAdd} />
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(
+    <Increase />,
+    document.getElementById('root')
+);
+
+</script>
+</body>
+</html>

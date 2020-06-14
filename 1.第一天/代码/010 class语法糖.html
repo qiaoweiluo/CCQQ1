@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 语法糖 -->
+<!-- (1) 语法糖（Syntactic sugar），也译为糖衣语法 -->
+<!-- (2) 指计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但是更方便程序员使用。 -->
+<!-- (3) 通常来说使用语法糖能够增加程序的可读性，从而减少程序代码出错的机会。 -->
+<!-- (4) 语法糖”这个词绝非贬义词，它可以给我们带来方便，是一种便捷的写法，编译器会帮我们做转换；而且可以提高开发编码的效率，在性能上也不会带来损失。 -->
+
+<body>
+    <script>
+        // ***************************(1) 构造函数****************************************** 
+        // // 1. 创建一个构造函数
+        // function MathHandle(x, y) {
+        //     this.x = x;
+        //     this.y = y;
+        // }
+        // // 2. 给这个构造函数对应的原型添加一个add的方法
+        // MathHandle.prototype.add = function () {
+        //     return this.x + this.y;
+        // }
+        // var m = new MathHandle(1, 2);
+        // console.log(m.add()) // 3
+        // ******************************(2) JavaScript中class的基本语法************************************************ 
+        class MathHandle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            add() {
+                return this.x + this.y;
+            }
+        }
+        // 实例化对象
+        const m = new MathHandle(3, 2);
+        console.log(m.add()) // 5
+        // ******************************(3) 运行比较************************************************ 
+        // console.log(typeof MathHandle) //'function'
+        // console.log(MathHandle.prototype.constructor === MathHandle) //true 
+        //函数都是有显示原型的,prototype就是显示原型,prototype默认有一个constructor属性,这个属性等于MathHandle本身
+        // console.log(m.__proto__ === MathHandle.prototype) //true  
+        //m是构造函数new出来的一个实例,所有的实例都有一个隐式原型__proto__等于MathHandle的显示原型
+
+        // ******************************(4) Class继承的写法************************************************ 
+        // class Animal {
+        //     constructor(name) {
+        //         this.name = name
+        //     }
+        //     eat() {
+        //         alert(this.name + 'eat')
+        //     }
+        // }
+        // class Bird extends Animal {
+        //     // 定义一个Bird类来继承 Animal类
+        //     // 通过extends关键字来实现继承
+        //     constructor(name) {
+        //         // super表示在子类中调用父类的构造函数类继承属性
+        //         super(name); // 注意!!!!!
+        //         this.name = name
+        //     }
+        //     // 定义子类自己的方法
+        //     say() {
+        //         alert(this.name + 'say')
+        //     }
+        // }
+        // const bird = new Bird('Pengguin')
+        // bird.say()  // Pengguinsay
+        // bird.eat()  // Pengguineat
+
+        // ******************************(5) 继承JS的写法  ************************************************ 
+        // 动物
+        function Animal() {
+            this.eat = function(){
+                alert('eat')
+            }
+        }
+        // 鸟
+        function Bird(){
+            this.bark = function(){
+                alert('bark')
+            }
+        }
+        // 绑定原型,实现继承
+        Bird.prototype = new Animal()
+
+        // 企鹅
+        var Pengguin = new Bird()
+
+        Pengguin.bark()
+        Pengguin.eat()
+        // 结论: 通过语法糖可增加代码的可读性
+    </script>
+
+</body>
+
+</html>

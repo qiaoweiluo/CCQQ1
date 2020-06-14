@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>todolist</title>
+	<style type="text/css">
+		.list_con{
+			width:600px;
+			margin:50px auto 0;
+		}
+		.inputtxt{
+			width:550px;
+			height:30px;
+			border:1px solid #ccc;
+			padding:0px;
+			text-indent:10px;			
+		}
+		.inputbtn{
+			width:40px;
+			height:32px;
+			padding:0px;
+			border:1px solid #ccc;
+		}
+		.list{
+			margin:0;
+			padding:0;
+			list-style:none;
+			margin-top:20px;
+		}
+		.list li{
+			height:40px;
+			line-height:40px;
+			border-bottom:1px solid #ccc;
+		}
+		.list li span{
+			float:left;
+		}
+		.list li a{
+			float:right;
+			text-decoration:none;
+			margin:0 10px;
+		}
+	</style>
+	 <script src="js/react.development.js"></script>
+     <script src="js/react-dom.development.js"></script>
+     <script src="js/babel.min.js"></script>
+  
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        class Todolist extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    aList:['学习html','学习css','学习javascript'],
+                    sTodo:''
+                }
+            }
+
+            fnChange=(e)=>{
+                this.setState({sTodo:e.target.value})
+            }
+
+            fnAdd=()=>{
+                this.setState(state=>{
+                    // 判断输入框是否为空
+                    if(state.sTodo.trim()==''){
+                        alert('请输入计划内容！');
+                        return;
+                    }
+
+                    return {
+                        // 复制原来的数组的基础上在加上输入框的值
+                        aList:[...state.aList,state.sTodo],
+                        sTodo:''
+                    }
+                })
+            }
+
+            fnDel=(i)=>{
+                this.setState(state=>{
+                   let aNewList = state.aList;
+                   //  从第i个成员开始操作数组，删除一个成员
+                   aNewList.splice(i,1);
+
+                   return {
+                       aList:aNewList
+                   }
+                })
+            }
+
+
+
+            render(){
+                let { aList,sTodo } = this.state;
+                return (
+                    <div className="list_con">
+                        <h2>To do list</h2>
+                        <input type="text" className="inputtxt" value={ sTodo } onChange={ this.fnChange } />
+                        <input type="button" value="增加" className="inputbtn" onClick={ this.fnAdd } />
+                        
+                        <ul id="list" className="list">
+                            {
+                                aList.map((item,i)=><li key={i}><span>{item}</span><a href="javascript:;" className="del" onClick={()=>{this.fnDel(i)}}>删除</a></li>)
+                            }                            
+                        </ul>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Todolist />,document.getElementById('root'));
+
+    </script>
+
+
+	
+    
+
+</body>
+</html>

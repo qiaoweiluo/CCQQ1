@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        let aList = [1,2,3,4];
+        let aList3 = ['a','b','c'];
+
+        // 下面的写法不是复制，是引用
+        //let aList2 = aList;
+
+        // 使用for循环复制数组
+        /* 
+        let aList2 = [];
+        for(var i=0;i<aList.length;i++){
+            aList2.push( aList[i] )
+        } */
+
+        // 使用扩展运算符复制数组
+        // let aList2 = [...aList,5,...aList3];
+        // console.log(aList2);
+        // aList2[0] = 11;
+        // console.log(aList2);
+        // console.log(aList);
+
+
+        let aList4 = [[1,2],['a','b'],[true,false]];
+        // let aList4 = [...aList,...aList3];
+        let aList5 = [...aList4,5];
+        // console.log(aList5);
+        console.log(aList4);
+
+        // aList5[1].push('c');
+        // console.log(aList5);
+        // console.log(aList4);
+
+        // 扩展运算符也是浅拷贝
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

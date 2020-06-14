@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    // 定义一个按钮组件
+    class HelloName extends React.Component{
+        /* fnHello(){
+            // 这里的this的值是undefined，这是react自己的问题
+            //console.log(this);
+            alert('Hello,'+this.props.name);
+        } */
+
+        // 改成箭头函数的形式，方法里面的this就指向组件本身
+        fnHello=()=>{
+            alert('Hello,'+this.props.name);
+        }
+
+        fnHello2=(sTr)=>{
+            alert('Hello '+sTr);
+        }
+
+        render(){
+            return (
+                // <input type="button" value="打招呼" onClick={ this.fnHello.bind(this) } />
+                <div>
+                    <input type="button" value="打招呼" onClick={ this.fnHello } />
+                    <input type="button" value="打招呼2" onClick={ ()=>{ this.fnHello2('Rose') } } />
+                </div>
+                
+            )
+        }
+    }
+
+    ReactDOM.render(<HelloName name="Rose" />,document.getElementById('root'));
+
+</script>
+</body>
+</html>

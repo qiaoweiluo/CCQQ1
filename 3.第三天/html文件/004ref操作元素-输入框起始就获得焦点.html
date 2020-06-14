@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class Myform extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {};
+
+            // 1、在构造函数中创建一个ref对象
+            this.oRef = React.createRef();
+        }
+
+        componentDidMount(){
+            //console.log( this.oRef.current );
+            // 3、在方法中通过 ref对象.current 拿到标签对象，从而对它做特定操作
+            this.oRef.current.focus();
+        }
+
+        render(){
+            // 2、在结构中，通过ref属性将标签和这个ref对象做关联
+            return <input type="text" ref={ this.oRef } />
+        }
+    }
+
+    ReactDOM.render(<Myform />,document.getElementById('root'));
+
+</script>
+</body>
+</html>

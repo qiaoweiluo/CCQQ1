@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // 相当于vue中的v-for
+      // key 用来做优化运算的 唯一值
+      let aList = ["红海", "复联3", "碟中谍6", "熊出没"]
+      let oJsx = (
+        <ul>
+          {aList.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
+      )
+      ReactDOM.render(oJsx, document.getElementById("root"))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<!-- (1) 定义一个类组件,类组件需要继承于React.Component类 -->
+<!-- (2) props属性是从React.Component类上面继承过来的 -->
+<!-- React中的每一个组件，都包含有一个属性（props）， -->
+<!-- 属性主要是从父组件传递给子组件的，在组件内部，我们可以通过this.props获取属性对象 -->
+<script type="text/babel">
+    // 定义一个类组件
+    // 类组件需要继承于React.Component类
+    class WelcomeName extends React.Component{
+        // 类组件至少要有一个render方法，这个方法内部返回一个jsx对象
+        // props属性是从React.Component类上面继承过来的
+        render(){
+            console.log(this); // 这里的this指向WelcomeName类组件 props: { name: 'Sara'}
+            return (
+                <h1>Hello,{this.props.name}</h1>
+            )
+        }
+    }
+
+    ReactDOM.render(<WelcomeName name="Sara" />,document.getElementById('root'));
+
+</script>
+</body>
+</html>

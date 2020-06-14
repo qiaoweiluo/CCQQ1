@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+    <script type="text/javascript" src="js/axios.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class Myform extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+                sPicUrl:''
+            };
+            this.oMyref = React.createRef();
+        }
+
+        fnUpoad=()=>{
+            //console.log( this.oMyref.current );            
+            // console.log( this.oMyref.current.files[0] )
+            // 拿到要上传的文件数据
+            let oFile = this.oMyref.current.files[0];
+            // 创建一个表单数据对象
+            let oFd = new FormData();
+            // 将文件数据放入到这个表单数据对象中
+            oFd.append('pic',oFile);
+
+            // 通过axios的post方法来提交这个表单数据对象
+            axios.post('http://localhost:3000/upload',oFd,{
+                headers:{
+                    'Content-Type':'multipart/form-data'
+                },
+                responseType:'text'
+            }).then(dat=>{
+                //console.log(dat.data);
+                this.setState({
+                    sPicUrl:dat.data
+                })
+            })
+
+        }
+
+        render(){
+            return (
+                <form>
+                    <input type="file" ref={ this.oMyref } />
+                    <input type="button" value="上传" onClick={ this.fnUpoad } /><br />
+                    {
+                       this.state.sPicUrl && <img src={'http://localhost:3000/' +this.state.sPicUrl } alt="" />
+                    }
+                </form>
+            )
+        }
+    }
+
+    ReactDOM.render(<Myform />,document.getElementById('root'));
+
+</script>
+</body>
+</html>

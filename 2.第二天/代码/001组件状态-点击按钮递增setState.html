@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // 定义一个类组件，里面包含一个p标签和一个按钮
+    class Increase extends React.Component{
+        // 继承过来的props
+        constructor(props){
+            // 初始化props属性
+            super(props);
+            // 自己的属性自己定义 一个对象  state  状态
+            this.state={
+                iNum:11
+            }
+        }
+
+        fnAdd=()=>{
+            // 不能直接修改state里面的值
+            //this.state.iNum++;
+
+            // 需要用专门的内置的方法setState去修改state里面的值
+            // setState使用方法一：直接传一个对象
+            // this.setState({iNum:12});
+
+            // setState使用方法二：传递一个匿名函数，函数的第一个参数就是state最新的值
+            // 我们可以依赖这个值去更新state的下一个值,这个函数最终需要返回一个修改后的对象
+            
+        //    this.setState(function(state){
+        //         return {
+        //             iNum: state.iNum + 1
+        //         }
+        //     })
+           
+            // 上面的写法可以简写成下面的形式：
+             this.setState(state=>({iNum: state.iNum + 1})); 
+
+        }
+
+        render(){
+            return (
+                <div>
+                    <p>{ this.state.iNum }</p>
+                    <input type="button" value="递增" onClick={ this.fnAdd } />
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(<Increase />,document.getElementById('root'));
+
+</script>
+</body>
+
+</html>

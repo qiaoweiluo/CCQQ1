@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>React Template</title>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Increase extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = { iNum: 11 }
+        }
+        // 点击增加的方法
+        fnAdd = () => {
+          // 修改状态值 必须使用内置的方法setSate去修改state里面的值
+          // 使用一: 传一个对象 固定值
+          // this.setState({iNum:12})
+
+          // 使用二  考虑到 this.setState是异步的
+          // 传递一个匿名函数,函数的第一个参数就是state最新的值
+          // 我们可以依赖这个值去更新state的下一个值,这个函数最终需要返回一个修改后的对象
+          // this.setState(function(state) {
+          //   return {
+          //     iNum: state.iNum + 1
+          //   }
+          // })
+          this.setState( state => ({ iNum: state.iNum + 1  }));
+        }
+        render() {
+          return (
+            <div>
+              <p> {this.state.iNum}</p>
+              <input type="button" value='递增' onClick = { this.fnAdd } />
+            </div>
+          )
+        }
+      }
+      // redom  快捷键
+      ReactDOM.render(<Increase />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
