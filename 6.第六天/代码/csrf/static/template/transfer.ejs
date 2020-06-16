@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <h2>转账</h2>
+        <form action="/pay" method="post">
+            <input type="hidden" name="csrf_token" value="alsdjfloroiuewr23439409809++??==iir">
+            <p>
+                <label>转游戏币给谁：</label>
+                <input type="text" name="who">
+            </p>
+            <p>
+                <label>转多少游戏币：</label>
+                <input type="text" name="money">
+            </p>
+            <p>
+                <input type="submit" value="提交">
+            </p>
+        </form>
+</body>
+</html>

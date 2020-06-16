@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="js/xss.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var oDiv = document.getElementById('div01')
+            var sParams = location.search;
+            var sCode = sParams.split('=')[1];
+
+            // console.log( decodeURIComponent(sCode) );
+            //oDiv.innerHTML = decodeURIComponent(sCode);
+
+            var oCon = document.getElementById('content');
+            var oBtn = document.getElementById('btn');
+
+            oBtn.onclick = function(){
+                let sFabuCon = filterXSS( oCon.value );
+                //let sFabuCon = oCon.value;
+                alert( sFabuCon );
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        祝：
+        <span id="div01">&lt;script&gt;document.body.style.background="red"&lt;/script&gt;</span>生日快乐！
+    </div>
+
+    发布文章：
+    <textarea style="width:500px;height:300px" id="content"></textarea>
+    <input type="button" value="发布文章" id="btn">
+    
+</body>
+</html>
