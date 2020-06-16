@@ -1,0 +1,52 @@
+body{
+    margin:0px;
+    font-family:'Microsoft YaHei';
+}
+.main_wrap{
+    width:900px;
+    margin:0 auto;
+}
+.banner{
+    display:block;
+}
+.menu{
+    width:900px;
+    height:60px;
+    border-radius:8px;
+    margin-top:15px;
+    background-color: #d8eeec;
+    display:flex;
+    align-items: center;
+}
+
+.main_wrap .menu button{
+    margin-left:20px;
+}
+
+.mp10{
+    margin-top:10px;
+}
+
+.image{
+    width:100%;
+}
+
+.goods_title{
+    font-size:13px;
+    color:#000;
+    margin:0px;
+}
+
+.price{
+    font-size:13px;
+    color:#ff5eaf;
+    margin-top:15px;
+    margin-bottom:5px;
+}
+
+.price em{
+    font-size:22px;
+    font-style:normal;
+    font-weight:bold;
+    
+}

@@ -1,0 +1,126 @@
+.rent_title {
+    height: 2.5rem;
+    background-color: #f9f9f9;
+    position: relative;
+    z-index: 998;
+  }
+  
+  .rent_title h3 {
+    line-height: 2.5rem;
+    font-size: 18px;
+    color: #394043;
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .rent_title .back {
+    position: absolute;
+    left: 1rem;
+    top: 0.6rem;
+    width: 1rem;
+    height: 1rem;
+    font-size: 1.2rem;
+    color: #8f949b;
+  }
+
+  .rent_house_list_con {
+    width: 100%;
+    top: 2.5rem;
+    bottom: 0;
+    overflow:auto;
+    padding-bottom:10px;
+  }
+  
+  .house_wrap {
+    height: 120px;
+    overflow: hidden;
+    box-sizing: border-box; 
+  }
+  
+  .house_item{
+      height:110px;
+      margin:10px 0 0;
+      overflow: hidden;
+      background-color: #fff;
+      display:flex;
+  }
+
+  .house_wrap .imgWrap {
+    width: 106px;
+    height: 80px;
+    margin:15px 0 0 15px
+  }
+  .img {
+    width: 106px;
+    height: 80px;
+  }
+  
+  .house_wrap .content {
+    margin:15px 15px 0 0px;
+    overflow: hidden;
+    padding-left: 12px;
+    line-height:20px;
+  }
+  
+  .title {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 15px;
+    color: #394043;
+  }
+  
+  .desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #afb2b3;
+  }
+  
+  .price {
+    font-size: 12px;
+    color: #fa5741;
+  }
+  
+  .priceNum {
+    font-size: 16px;
+    font-weight: bolder;
+  }
+  
+  .tag {
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 4px 5px;
+    margin-right: 5px;
+    line-height: 12px;
+  }
+  .tag0 {
+    color: #39becd;
+    background: #e1f5f8;
+  }
+  .tag1 {
+    color: #3fc28c;
+    background: #e1f5ed;
+  }
+  .tag2 {
+    color: #5aabfd;
+    background: #e6f2ff;
+  }
+  .tag3 {
+    color: #39becd;
+    background: #e1f5f8;
+  }
+  .tag4 {
+    color: #3fc28c;
+    background: #e1f5ed;
+  }
+  .tag5 {
+    color: #5aabfd;
+    background: #e6f2ff;
+  }

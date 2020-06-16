@@ -1,0 +1,38 @@
+a{
+    text-decoration:none;
+    color:#333
+}
+
+.active{
+    color:red;
+    position: relative;
+}
+
+.active::before{
+    content:'<';
+    position:absolute;
+    left:23px;
+    top:14px;
+    transform:rotate(90deg);
+
+}
+
+.menu{
+    position: fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:200px;
+    background-color: #f80;
+    box-sizing:border-box;
+    padding:20px;
+}
+
+.content{
+    position: fixed;
+    left:200px;
+    top:0;
+    bottom:0;
+    right:0;
+    background-color: lightblue;
+}

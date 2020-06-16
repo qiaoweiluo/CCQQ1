@@ -1,0 +1,30 @@
+{
+  "description": "请求成功",
+  "status": 200,
+  "body": [
+    {
+      "id": 1,
+      "title": "家住回龙观",
+      "desc": "归属的感觉",
+      "imgSrc": "/img/groups/1.png"
+    },
+    {
+      "id": 2,
+      "title": "宜居四五环",
+      "desc": "大都市生活",
+      "imgSrc": "/img/groups/2.png"
+    },
+    {
+      "id": 3,
+      "title": "喧嚣三里屯",
+      "desc": "繁华的背后",
+      "imgSrc": "/img/groups/3.png"
+    },
+    {
+      "id": 4,
+      "title": "比邻十号线",
+      "desc": "地铁心连心",
+      "imgSrc": "/img/groups/4.png"
+    }
+  ]
+}
